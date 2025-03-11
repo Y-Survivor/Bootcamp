@@ -1,1 +1,3 @@
-print(5+5)
+square = lambda n : n*n
+num = square(5)
+print (num)
