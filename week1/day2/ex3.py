@@ -51,4 +51,4 @@ more_on_zara = {
 brand.update(more_on_zara)
 
 # 13. Print the value of the key number_stores
-print(f"The number of stores is now {brand['number_stores']}.")
+print(f"The number of stores now is {brand['number_stores']}.")
