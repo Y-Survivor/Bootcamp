@@ -4,7 +4,7 @@ def generate_multiples(number, length):
         multiples.append(number * i)
     return multiples
 
-# Get user input
+# To Get user input
 number = int(input("Enter a number: "))
 length = int(input("Enter the length: "))
 
