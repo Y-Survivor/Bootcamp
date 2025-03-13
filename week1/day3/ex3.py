@@ -6,8 +6,12 @@ class Song:
         for line in self.lyrics:
             print(line)
 
-# Create an object of the Song class
-stairway = Song(["There’s a lady who's sure", "all that glitters is gold", "and she’s buying a stairway to heaven"])
+# Create an object of the Song class with the provided lyrics
+stairway = Song([
+    "There's a lady who's sure",
+    "all that glitters is gold",
+    "and she's buying a stairway to heaven"
+])
 
 # Call the sing_me_a_song method
 stairway.sing_me_a_song()
