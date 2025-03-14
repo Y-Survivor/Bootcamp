@@ -29,6 +29,6 @@ class Game:
         result = self.get_game_result(user_item, computer_item)
         
         item_names = {'r': 'rock', 'p': 'paper', 's': 'scissors'}
-        print(f"You selected {item_names[user_item]}. The computer has selected {item_names[computer_item]}. You {result}!")
+        print(f"You selected {item_names[user_item]}. The computer selected {item_names[computer_item]}. You {result}!")
         
         return result
