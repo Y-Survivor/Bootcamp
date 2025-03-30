@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Challenge: Create a solar system</title>
+        <style>
+            body {
+                background-color: black;
+                padding: 10px;
+            }
+            .listPlanets {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 120px;
+                justify-content: center;
+            }
+            .planet {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                text-align: center;
+                padding: 10px;
+                position: relative;
+                border: 2px solid white;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+            }
+            .moon {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: rgb(237, 237, 237);
+                border: 2px solid white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 8px;
+                color: black;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="listPlanets"></section>
+
+        <script>
+            // Array of planet objects with their properties including moons
+            const planets = [
+                { name: "Mercury", color: "grey", moons: [] },
+                { name: "Venus", color: "orange", moons: [] },
+                { name: "Earth", color: "blue", moons: ["Moon"] },
+                { name: "Mars", color: "red", moons: ["Phobos", "Deimos"] },
+                { name: "Jupiter", color: "brown", moons: ["Io", "Europa", "Ganymede", "Callisto"] },
+                { name: "Saturn", color: "gold", moons: ["Titan", "Rhea", "Iapetus"] },
+                { name: "Uranus", color: "lightblue", moons: ["Miranda", "Ariel", "Umbriel", "Titania", "Oberon"] },
+                { name: "Neptune", color: "darkblue", moons: ["Triton", "Nereid"] }
+            ];
+
+            // Get the section element where we'll add planets
+            const planetSection = document.querySelector('.listPlanets');
+
+            // Create and display each planet with its moons
+            planets.forEach(planet => {
+                // Create planet div
+                const planetDiv = document.createElement('div');
+                planetDiv.className = 'planet';
+                planetDiv.style.backgroundColor = planet.color;
+                planetDiv.textContent = planet.name;
+                
+                // Add moons if they exist
+                planet.moons.forEach((moon, index) => {
+                    const moonDiv = document.createElement('div');
+                    moonDiv.className = 'moon';
+                    // Position moons in a circular pattern around the planet
+                    const angle = (index / planet.moons.length) * 2 * Math.PI;
+                    const moonOrbitRadius = 60; // Distance from planet center
+                    moonDiv.style.left = `${50 + moonOrbitRadius * Math.cos(angle) - 15}px`; // 15 is half moon width
+                    moonDiv.style.top = `${50 + moonOrbitRadius * Math.sin(angle) - 15}px`; // 15 is half moon height
+                    moonDiv.textContent = moon;
+                    planetDiv.appendChild(moonDiv);
+                });
+                
+                // Add planet to the section
+                planetSection.appendChild(planetDiv);
+            });
+        </script>
+    </body>
+</html>
