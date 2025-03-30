@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Challenge: Mad Libs</title>
+  <style>
+    #story {
+      font-weight: bold;
+      color: blue;
+    }
+    button {
+      margin: 5px;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input {
+      margin-bottom: 10px;
+    }
+  </style>
+ </head>
+ <body>
+
+    <h1>Mad Libs</h1>
+
+    <form id="libform">
+        <label for="noun">Noun:</label><input type="text" id="noun" required><br>
+        <label for="adjective">Adjective:</label><input type="text" id="adjective" required><br>
+        <label for="person">Someone's Name:</label><input type="text" id="person" required><br>
+        <label for="verb">Verb:</label><input type="text" id="verb" required><br>
+        <label for="place">A place:</label><input type="text" id="place" required><br>
+        <button type="button" id="lib-button">Lib it!</button>
+        <button type="button" id="shuffle-button">Shuffle Story</button>
+    </form>
+
+    <p>Generated story: 
+    <span id="story"></span>
+    </p>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const libButton = document.getElementById('lib-button');
+        const shuffleButton = document.getElementById('shuffle-button');
+        const storySpan = document.getElementById('story');
+        
+        // Array of different story templates
+        const storyTemplates = [
+          (noun, adjective, person, verb, place) => 
+            `Once upon a time, a ${adjective} ${noun} named ${person} decided to ${verb} all the way to ${place}. What an adventure!`,
+          
+          (noun, adjective, person, verb, place) => 
+            `${person} had a ${adjective} ${noun} that loved to ${verb}. One day, they took it to ${place} and everyone was amazed!`,
+          
+          (noun, adjective, person, verb, place) => 
+            `In a world where ${noun}s were ${adjective}, ${person} had to ${verb} to survive. The journey to ${place} changed everything.`,
+          
+          (noun, adjective, person, verb, place) => 
+            `"Stop!" cried ${person} as the ${adjective} ${noun} began to ${verb} uncontrollably. This wasn't how they imagined their trip to ${place}.`,
+          
+          (noun, adjective, person, verb, place) => 
+            `The ${adjective} ${noun} that ${person} found could ${verb} like no other. It became famous throughout ${place}.`
+        ];
+        
+        let currentStoryIndex = 0;
+        let userInputs = {};
+        
+        // Function to generate a story
+        function generateStory(index) {
+          const { noun, adjective, person, verb, place } = userInputs;
+          return storyTemplates[index](noun, adjective, person, verb, place);
+        }
+        
+        // Function to validate inputs
+        function validateInputs() {
+          const noun = document.getElementById('noun').value.trim();
+          const adjective = document.getElementById('adjective').value.trim();
+          const person = document.getElementById('person').value.trim();
+          const verb = document.getElementById('verb').value.trim();
+          const place = document.getElementById('place').value.trim();
+          
+          if (!noun || !adjective || !person || !verb || !place) {
+            alert('Please fill in all fields!');
+            return false;
+          }
+          
+          userInputs = { noun, adjective, person, verb, place };
+          return true;
+        }
+        
+        // Function to display a random story
+        function displayRandomStory() {
+          if (Object.keys(userInputs).length === 0) {
+            alert('Please generate a story first!');
+            return;
+          }
+          
+          // Get a random index different from the current one
+          let newIndex;
+          do {
+            newIndex = Math.floor(Math.random() * storyTemplates.length);
+          } while (newIndex === currentStoryIndex && storyTemplates.length > 1);
+          
+          currentStoryIndex = newIndex;
+          storySpan.textContent = generateStory(currentStoryIndex);
+        }
+        
+        // Event listener for the Lib it! button
+        libButton.addEventListener('click', function() {
+          if (validateInputs()) {
+            currentStoryIndex = 0; // Start with the first story
+            storySpan.textContent = generateStory(currentStoryIndex);
+          }
+        });
+        
+        // Event listener for the Shuffle Story button
+        shuffleButton.addEventListener('click', function() {
+          displayRandomStory();
+        });
+      });
+    </script>
+
+ </body>
+</html>
