@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Pattern Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .solution {
+            width: 48%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h2 {
+            color: #444;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Star Pattern Generator</h1>
+    
+    <div class="container">
+        <div class="solution">
+            <h2>Single Loop Solution</h2>
+            <pre id="singleLoopOutput"></pre>
+        </div>
+        
+        <div class="solution">
+            <h2>Nested Loops Solution</h2>
+            <pre id="nestedLoopsOutput"></pre>
+        </div>
+    </div>
+
+    <script>
+        // Single loop solution
+        function generatePatternWithSingleLoop() {
+            let pattern = '';
+            for (let i = 1; i <= 6; i++) {
+                pattern += '* '.repeat(i).trim() + '\n';
+            }
+            return pattern;
+        }
+
+        // Nested loops solution
+        function generatePatternWithNestedLoops() {
+            let fullPattern = '';
+            for (let i = 1; i <= 6; i++) {
+                let row = '';
+                for (let j = 1; j <= i; j++) {
+                    row += '* ';
+                }
+                fullPattern += row.trim() + '\n';
+            }
+            return fullPattern;
+        }
+
+        // Display the results when the page loads
+        window.onload = function() {
+            document.getElementById('singleLoopOutput').textContent = generatePatternWithSingleLoop();
+            document.getElementById('nestedLoopsOutput').textContent = generatePatternWithNestedLoops();
+        };
+    </script>
+</body>
+</html>
