@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juice Bar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .part {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        .part h2 {
+            color: #3498db;
+            margin-top: 0;
+        }
+        p {
+            background-color: #e8f4f8;
+            padding: 10px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Juice Bar Orders</h1>
+    
+    <div class="part">
+        <h2>Part I: Basic Juice Order</h2>
+        <div id="part1-results"></div>
+    </div>
+    
+    <div class="part">
+        <h2>Part II: Custom Juice Order</h2>
+        <div id="part2-results"></div>
+    </div>
+
+    <script>
+        // Part I Solution
+        function makeJuicePart1(size) {
+            function addIngredients(ing1, ing2, ing3) {
+                const sentence = `The client wants a ${size} juice, containing ${ing1}, ${ing2}, ${ing3}.`;
+                document.getElementById('part1-results').innerHTML += `<p>${sentence}</p>`;
+            }
+            
+            addIngredients('apple', 'orange', 'carrot');
+        }
+        makeJuicePart1('medium');
+
+        // Part II Solution
+        function makeJuicePart2(size) {
+            let ingredients = [];
+            
+            function addIngredients(ing1, ing2, ing3) {
+                ingredients.push(ing1, ing2, ing3);
+            }
+            
+            function displayJuice() {
+                const sentence = `The client wants a ${size} juice, containing ${ingredients.join(', ')}.`;
+                document.getElementById('part2-results').innerHTML += `<p>${sentence}</p>`;
+            }
+            
+            addIngredients('apple', 'orange', 'carrot');
+            addIngredients('ginger', 'spinach', 'beet');
+            displayJuice();
+        }
+        makeJuicePart2('large');
+    </script>
+</body>
+</html>
