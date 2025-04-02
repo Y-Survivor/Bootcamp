@@ -10,7 +10,7 @@ function funcOne() {
 }
 
 // #1.1 - Prediction: The alert will show "inside the funcOne function 3"
-// Explanation: a will obtain the value of 3  aslong as the condition is true (a > 1). In this case, a= 5, so the condition is true and a is reassigned to 3. 
+// Explanation: a will get the value of 3  aslong as the condition is true (a > 1). In this case, a= 5, so the condition is true and a is reassigned to 3. 
 
 // #1.2 - If declared with const: 
 // It will throw an error because const variables cannot be reassigned after declaration
