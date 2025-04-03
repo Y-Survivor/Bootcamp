@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Data Processing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            max-width: 800px;
+        }
+        .section {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #3498db;
+            margin-top: 0;
+        }
+        p {
+            margin: 5px 0;
+        }
+        .user-item {
+            padding: 3px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Data Processing</h1>
+    
+    <!-- Solution 1: Welcome Messages -->
+    <div class="section">
+        <h2>1. Welcome Messages:</h2>
+        <div id="welcomeMessages"></div>
+    </div>
+    
+    <!-- Solution 2: Full Stack Residents -->
+    <div class="section">
+        <h2>2. Full Stack Residents:</h2>
+        <div id="fullStackResidents"></div>
+    </div>
+    
+    <!-- Solution 3: Last Names of Full Stack Residents -->
+    <div class="section">
+        <h2>3. Last Names of Full Stack Residents:</h2>
+        <div id="lastNames"></div>
+    </div>
+
+    <script>
+        const users = [
+            { firstName: 'Bradley', lastName: 'Bouley', role: 'Full Stack Resident' },
+            { firstName: 'Chloe', lastName: 'Alnaji', role: 'Full Stack Resident' },
+            { firstName: 'Jonathan', lastName: 'Baughn', role: 'Enterprise Instructor' },
+            { firstName: 'Michael', lastName: 'Herman', role: 'Lead Instructor' },
+            { firstName: 'Robert', lastName: 'Hajek', role: 'Full Stack Resident' },
+            { firstName: 'Wes', lastName: 'Reid', role: 'Instructor'},
+            { firstName: 'Zach', lastName: 'Klabunde', role: 'Instructor'}
+        ];
+
+        // Solution 1: Welcome Messages using map()
+        const welcomeMessages = users.map(user => `Hello ${user.firstName}`);
+        const welcomeContainer = document.getElementById('welcomeMessages');
+        welcomeMessages.forEach(message => {
+            const p = document.createElement('p');
+            p.className = 'user-item';
+            p.textContent = message;
+            welcomeContainer.appendChild(p);
+        });
+
+        // Solution 2: Filter Full Stack Residents
+        const fullStackResidents = users.filter(user => user.role === 'Full Stack Resident');
+        const residentsContainer = document.getElementById('fullStackResidents');
+        fullStackResidents.forEach(user => {
+            const p = document.createElement('p');
+            p.className = 'user-item';
+            p.textContent = `${user.firstName} ${user.lastName} - ${user.role}`;
+            residentsContainer.appendChild(p);
+        });
+
+        // Solution 3: Last Names of Full Stack Residents (filter + map chain)
+        const fullStackLastNames = users
+            .filter(user => user.role === 'Full Stack Resident')
+            .map(user => user.lastName);
+        const lastNamesContainer = document.getElementById('lastNames');
+        fullStackLastNames.forEach(lastName => {
+            const p = document.createElement('p');
+            p.className = 'user-item';
+            p.textContent = lastName;
+            lastNamesContainer.appendChild(p);
+        });
+    </script>
+</body>
+</html>
