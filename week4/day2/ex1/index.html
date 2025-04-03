@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors Exercise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .output {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color Choices</h1>
+    
+    <div class="output" id="colorOutput"></div>
+    <div class="output" id="violetCheck"></div>
+
+    <script>
+        const colors = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
+        const colorOutput = document.getElementById('colorOutput');
+        const violetCheck = document.getElementById('violetCheck');
+
+        // Display colors with their choice number
+        colors.forEach((color, index) => {
+            const p = document.createElement('p');
+            p.textContent = `${index + 1}# choice is ${color}.`;
+            colorOutput.appendChild(p);
+        });
+
+        // Check if array contains "Violet"
+        const result = document.createElement('p');
+        if (colors.includes("Violet")) {
+            result.textContent = "Yeah";
+            result.style.color = 'green';
+        } else {
+            result.textContent = "No...";
+            result.style.color = 'red';
+        }
+        violetCheck.appendChild(result);
+    </script>
+</body>
+</html>
