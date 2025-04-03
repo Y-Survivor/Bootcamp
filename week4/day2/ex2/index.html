@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors with Ordinals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .output {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color Choices with Ordinals</h1>
+    <div class="output" id="colorOutput"></div>
+
+    <script>
+        const colors = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
+        const ordinal = ["th", "st", "nd", "rd"];
+        const colorOutput = document.getElementById('colorOutput');
+
+        colors.forEach((color, index) => {
+            const position = index + 1;
+            // Determine the correct ordinal suffix using ternary operator
+            const suffix = 
+                position % 100 >= 11 && position % 100 <= 13 ? 'th' : // Handle 11th, 12th, 13th
+                ordinal[position % 10] || 'th'; // Use ordinal array or default to 'th'
+            
+            const p = document.createElement('p');
+            p.textContent = `${position}${suffix} choice is ${color}.`;
+            colorOutput.appendChild(p);
+        });
+    </script>
+</body>
+</html>
