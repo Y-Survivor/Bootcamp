@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            max-width: 800px;
+        }
+        .section {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #3498db;
+        }
+        .student {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: white;
+            border-radius: 3px;
+        }
+        .passed {
+            border-left: 4px solid #2ecc71;
+        }
+        .failed {
+            border-left: 4px solid #e74c3c;
+        }
+        .congrats {
+            color: #27ae60;
+            font-weight: bold;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e8f8f0;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <h1>Student Results</h1>
+        
+        <h2>All Students:</h2>
+        <div id="allStudents"></div>
+        
+        <h2>Students Who Passed:</h2>
+        <div id="passedStudents"></div>
+        
+        <h2>Congratulations:</h2>
+        <div id="congratulations"></div>
+    </div>
+
+    <script>
+        const students = [
+            {name: "Ray", course: "Computer Science", isPassed: true}, 
+            {name: "Liam", course: "Computer Science", isPassed: false}, 
+            {name: "Jenner", course: "Information Technology", isPassed: true}, 
+            {name: "Marco", course: "Robotics", isPassed: true}, 
+            {name: "Kimberly", course: "Artificial Intelligence", isPassed: false}, 
+            {name: "Jamie", course: "Big Data", isPassed: false}
+        ];
+
+        // Display all students
+        const allStudentsContainer = document.getElementById('allStudents');
+        students.forEach(student => {
+            const div = document.createElement('div');
+            div.className = `student ${student.isPassed ? 'passed' : 'failed'}`;
+            div.textContent = `${student.name} - ${student.course} (${student.isPassed ? 'Passed' : 'Failed'})`;
+            allStudentsContainer.appendChild(div);
+        });
+
+        // 1. Filter students who passed
+        const passedStudents = students.filter(student => student.isPassed);
+        const passedContainer = document.getElementById('passedStudents');
+        
+        passedStudents.forEach(student => {
+            const div = document.createElement('div');
+            div.className = 'student passed';
+            div.textContent = `${student.name} - ${student.course}`;
+            passedContainer.appendChild(div);
+        });
+
+        // 2. Bonus: Chain filter with forEach to congratulate
+        const congratsContainer = document.getElementById('congratulations');
+        students
+            .filter(student => student.isPassed)
+            .forEach(student => {
+                const p = document.createElement('p');
+                p.className = 'congrats';
+                p.textContent = `Good job ${student.name}, you passed the course in ${student.course}!`;
+                congratsContainer.appendChild(p);
+            });
+    </script>
+</body>
+</html>
