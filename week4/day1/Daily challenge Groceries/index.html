@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groceries Challenge Solution</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .output {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .output-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Groceries Challenge Solution</h1>
+    
+    <h2>Original Objects:</h2>
+    <pre id="originalObjects"></pre>
+    
+    <h2>Output:</h2>
+    <div class="output">
+        <div class="output-title">displayGroceries():</div>
+        <div id="displayGroceriesOutput"></div>
+        
+        <div class="output-title">cloneGroceries():</div>
+        <div id="cloneGroceriesOutput"></div>
+    </div>
+
+    <script>
+        // Original objects
+        let client = "John";
+
+        const groceries = {
+            fruits: ["pear", "apple", "banana"],
+            vegetables: ["tomatoes", "cucumber", "salad"],
+            totalPrice: "20$",
+            other: {
+                paid: true,
+                meansOfPayment: ["cash", "creditCard"]
+            }
+        };
+
+        // Display original objects
+        document.getElementById('originalObjects').textContent = 
+            `let client = "${client}";\n\n` +
+            `const groceries = ${JSON.stringify(groceries, null, 4)};`;
+
+        // 1. displayGroceries function
+        const displayGroceries = () => {
+            let output = '';
+            groceries.fruits.forEach(fruit => {
+                output += fruit + '<br>';
+            });
+            document.getElementById('displayGroceriesOutput').innerHTML = output;
+        };
+
+        // 2. cloneGroceries function
+        const cloneGroceries = () => {
+            let output = '';
+            
+            let user = client; // Copy of the client variable (primitive, passed by value)
+            client = "Betty"; // Changing the original client variable
+
+            let shopping = groceries; // Copy of the groceries object (passed by reference)
+            shopping.totalPrice = "35$"; // Modifying the totalPrice
+            shopping.other.paid = false; // Modifying the paid property
+
+            // Testing the changes:
+            output += `User: ${user}<br>`; // Should still be "John"
+            output += `Client: ${client}<br>`; // Should be "Betty"
+            output += `Shopping totalPrice: ${shopping.totalPrice}<br>`; // Should be "35$"
+            output += `Groceries totalPrice: ${groceries.totalPrice}<br>`; // Should also be "35$"
+            output += `Shopping paid: ${shopping.other.paid}<br>`; // Should be false
+            output += `Groceries paid: ${groceries.other.paid}<br>`; // Should also be false
+
+            document.getElementById('cloneGroceriesOutput').innerHTML = output;
+        };
+
+        // Invoke the functions when the page loads
+        window.onload = function() {
+            displayGroceries();
+            cloneGroceries();
+        };
+    </script>
+</body>
+</html>
