@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1: HTML Form</title>
+</head>
+<body>
+    <h1>Exercise 1 : HTML Form</h1>
+    <h2>Instructions</h2>
+    <p><strong>Hint</strong> : Read about sending form data using the HTTP protocol</p>
+
+    <form action="" method="GET">
+        <label for="name">Name</label><br>
+        <input type="text" id="name" name="name" value="Yasser"><br><br>
+
+        <label for="comments">Comments</label><br>
+        <textarea id="comments" name="comments" rows="4" cols="50">Hello this is a comment</textarea><br><br>
+
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html>
+
+<!--When you click the "Send" button and the form is submitted with the GET method:
+
+The form data will be appended to the URL in the address bar as query parameters.
+
+The URL will look something like: ?name=John&comments=Hello+this+is+a+comment
+
+The data appears in the URL after the question mark (?), with name-value pairs separated by ampersands (&).
+
+Spaces are typically replaced with "+" signs or "%20" in the URL.-->
