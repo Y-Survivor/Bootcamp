@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Class Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .video-info {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Watcher Demo</h1>
+    
+    <div class="video-info">
+        <h2>Single Video Instances</h2>
+        <button onclick="demoSingleInstances()">Run Single Instance Demo</button>
+        <div id="singleOutput"></div>
+    </div>
+    
+    <div class="video-info">
+        <h2>Multiple Videos (Bonus)</h2>
+        <button onclick="demoMultipleInstances()">Run Multiple Instance Demo</button>
+        <div id="multiOutput"></div>
+    </div>
+
+    <script>
+        class Video {
+            constructor(title, uploader, time) {
+                this.title = title;
+                this.uploader = uploader;
+                this.time = time;
+            }
+
+            watch() {
+                return `${this.uploader} watched all ${this.time} seconds of ${this.title}!`;
+            }
+        }
+
+        function demoSingleInstances() {
+            const output = document.getElementById('singleOutput');
+            output.innerHTML = '';
+            
+            // Create single instances
+            const video1 = new Video("JavaScript Tutorial", "CodeMaster", 600);
+            const video2 = new Video("CSS Basics", "DesignGuru", 450);
+            
+            // Display results
+            output.innerHTML += `<p>${video1.watch()}</p>`;
+            output.innerHTML += `<p>${video2.watch()}</p>`;
+        }
+
+        function demoMultipleInstances() {
+            const output = document.getElementById('multiOutput');
+            output.innerHTML = '<h3>Five Video Instances:</h3>';
+            
+            // Video data array
+            const videoData = [
+                { title: "React Fundamentals", uploader: "FrontEndPro", time: 720 },
+                { title: "Node.js Crash Course", uploader: "BackEndDev", time: 900 },
+                { title: "Python for Beginners", uploader: "DataScientist", time: 800 },
+                { title: "HTML5 Features", uploader: "WebMaster", time: 300 },
+                { title: "TypeScript Introduction", uploader: "AngularExpert", time: 650 }
+            ];
+            
+            // Create instances
+            const videos = videoData.map(data => new Video(data.title, data.uploader, data.time));
+            
+            // Display all
+            videos.forEach(video => {
+                output.innerHTML += `<p>${video.watch()}</p>`;
+            });
+        }
+    </script>
+</body>
+</html>
