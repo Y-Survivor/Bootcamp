@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2: HTML Form #2</title>
+</head>
+<body>
+    <h1>Exercise 2 : HTML Form #2</h1>
+    <h2>Instructions</h2>
+    <!--Using the same form structure as Exercise 1. -->
+
+    <form action="" method="POST">
+        <label for="name">Name</label><br>
+        <input type="text" id="name" name="name" value="Yasser"><br><br>
+
+        <label for="comments">Comments</label><br>
+        <textarea id="comments" name="comments" rows="4" cols="50">Hello this is a comment</textarea><br><br>
+
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html>
+
+<!--When you click the "Send" button with the POST method:
+
+1. The form data will NOT appear in the URL (unlike with GET).
+
+2. The data is sent in the body of the HTTP request.
+
+3. To view the sent data:
+
+        Open your browser's Developer Tools (F12 or right-click → Inspect)
+
+        Go to the "Network" tab
+
+        Submit the form
+
+        Look for the request (usually the first entry or named after your HTML file)
+
+        Click on the request and go to the "Headers" section
+
+        Scroll down to "Form Data" or "Request Payload" to see the submitted data
+
+The Network tab will show you:
+
+        The request method (POST)
+
+        The content-type (usually application/x-www-form-urlencoded)
+
+        The form data in the request body (name=John&comments=Hello+this+is+a+comment)
+
+Since we're using the same HTML file as the action URL, the page will reload but won't display 
+the submitted data unless you add server-side code to process it.-->
