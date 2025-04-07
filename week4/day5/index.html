@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboFriends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0f0f1a;
+            background-image: url('https://github.com/devtlv/studentsGitHub/blob/master/JS/Week%204/Day5/Mini%20Projects/Mini%20Project%201%20(Robots)/circuit-pattern.png?raw=true');
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        
+        h1 {
+            font-family: 'Big Shoulders Stencil Text', cursive;
+            text-align: center;
+            font-size: 3rem;
+            color: #0ccac4;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .search-box {
+            display: block;
+            width: 200px;
+            margin: 0 auto 30px;
+            padding: 10px;
+            border: 1px solid #0ccac4;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 200px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+            backdrop-filter: blur(2px);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        
+        .card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #0ccac4;
+        }
+        
+        .card h2 {
+            margin: 0 0 10px;
+            color: #333;
+        }
+        
+        .card p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ROBOFRIENDS</h1>
+    <input type="text" class="search-box" placeholder="Search Robots">
+    <div class="card-container"></div>
+
+    <script>
+        // Robot data array
+        const robots = [
+            {
+                id: 1,
+                name: "Leanne Graham",
+                username: "Bret",
+                email: "Sincere@april.biz"
+            },
+            {
+                id: 2,
+                name: "Ervin Howell",
+                username: "Antonette",
+                email: "Shanna@melissa.tv"
+            },
+            {
+                id: 3,
+                name: "Clementine Bauch",
+                username: "Samantha",
+                email: "Nathan@yesenia.net"
+            },
+            {
+                id: 4,
+                name: "Patricia Lebsack",
+                username: "Karianne",
+                email: "Julianne.OConner@kory.org"
+            },
+            {
+                id: 5,
+                name: "Chelsey Dietrich",
+                username: "Kamren",
+                email: "Lucio_Hettinger@annie.ca"
+            },
+            {
+                id: 6,
+                name: "Mrs. Dennis Schulist",
+                username: "Leopoldo_Corkery",
+                email: "Karley_Dach@jasper.info"
+            },
+            {
+                id: 7,
+                name: "Kurtis Weissnat",
+                username: "Elwyn.Skiles",
+                email: "Telly.Hoeger@billy.biz"
+            },
+            {
+                id: 8,
+                name: "Nicholas Runolfsdottir V",
+                username: "Maxime_Nienow",
+                email: "Sherwood@rosamond.me"
+            },
+            {
+                id: 9,
+                name: "Glenna Reichert",
+                username: "Delphine",
+                email: "Chaim_McDermott@dana.io"
+            },
+            {
+                id: 10,
+                name: "Clementina DuBuque",
+                username: "Moriah.Stanton",
+                email: "Rey.Padberg@karina.biz"
+            }
+        ];
+
+        // Function to generate robot cards
+        function renderRobots(robotsArray) {
+            const cardContainer = document.querySelector('.card-container');
+            cardContainer.innerHTML = '';
+            
+            robotsArray.forEach(robot => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                // Using RoboHash for robot images
+                const img = document.createElement('img');
+                img.src = `https://robohash.org/${robot.id}?size=200x200`;
+                img.alt = robot.name;
+                
+                const name = document.createElement('h2');
+                name.textContent = robot.name;
+                
+                const email = document.createElement('p');
+                email.textContent = robot.email;
+                
+                card.appendChild(img);
+                card.appendChild(name);
+                card.appendChild(email);
+                
+                cardContainer.appendChild(card);
+            });
+        }
+
+        // Initial render
+        renderRobots(robots);
+
+        // Search functionality
+        const searchBox = document.querySelector('.search-box');
+        searchBox.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredRobots = robots.filter(robot => 
+                robot.name.toLowerCase().includes(searchTerm)
+            );
+            renderRobots(filteredRobots);
+        });
+    </script>
+</body>
+</html>
