@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giphy Random GIF Fetcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #gif-form {
+            margin-bottom: 20px;
+        }
+        #gif-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .gif-item {
+            position: relative;
+            margin-bottom: 10px;
+        }
+        .delete-btn {
+            margin-left: 10px;
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background-color: #cc0000;
+        }
+        #delete-all-btn {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #delete-all-btn:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    // This is a simple HTML page that allows users to fetch random GIFs from Giphy based on a search term.
+    <h1>Giphy Random GIF Fetcher</h1>
+    
+    <form id="gif-form">
+        <input type="text" id="gif-search" placeholder="Enter a category (e.g. sun, cat, dog)" required>
+        <button type="submit">Get Random GIF</button>
+    </form>
+    
+    <div id="gif-container"></div>
+    
+    <button id="delete-all-btn">DELETE ALL GIFs</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
