@@ -2,7 +2,7 @@ async function fetchStarshipData() {
     try {
       const response = await fetch("https://www.swapi.tech/api/starships/9/");
       
-      // Here we will check if the response is successful (status code 200-299)
+      // Check if the response is successful (status code 200-299)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
