@@ -1,0 +1,16 @@
+Hello World!
+
+This is the source file that will be copied to the destination file.
+
+Node.js makes it easy to work with files using the built-in fs module.
+
+Some key features of Node.js file system operations:
+- Reading files
+- Writing files
+- Appending to files
+- Copying files
+- Creating directories
+- Reading directory contents
+- Watching files for changes
+
+This text will be copied to destination.txt when you run the copy-file.js script.
