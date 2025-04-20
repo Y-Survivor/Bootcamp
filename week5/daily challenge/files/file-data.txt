@@ -1,0 +1,2 @@
+This is some sample text content for the file.
+Node.js file operations are powerful!
