@@ -1,0 +1,82 @@
+
+<!-- File: views/score.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+    .container {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .score {
+      font-size: 2em;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #2c3e50;
+    }
+    .message {
+      margin-bottom: 30px;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 10px;
+    }
+    .btn:hover {
+      background-color: #2980b9;
+    }
+    .btn.home {
+      background-color: #7f8c8d;
+    }
+    .btn.home:hover {
+      background-color: #697374;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz Complete!</h1>
+    
+    <div class="score">
+      <%= score %> / <%= totalQuestions %>
+    </div>
+    
+    <div class="message">
+      <% if (score === totalQuestions) { %>
+        Perfect score! You know your trivia!
+      <% } else if (score > totalQuestions / 2) { %>
+        Good job! You have solid trivia knowledge.
+      <% } else { %>
+        Nice try! Keep learning and try again.
+      <% } %>
+    </div>
+    
+    <div class="actions">
+      <a href="/quiz/reset" class="btn">Play Again</a>
+      <a href="/" class="btn home">Home</a>
+    </div>
+  </div>
+</body>
+</html>

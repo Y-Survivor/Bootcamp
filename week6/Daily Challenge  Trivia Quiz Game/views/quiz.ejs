@@ -1,0 +1,97 @@
+<!-- File: views/quiz.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trivia Quiz Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+    .container {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .question {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .progress {
+      margin-bottom: 15px;
+      color: #7f8c8d;
+    }
+    .feedback {
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .feedback.correct {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .feedback.incorrect {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    form {
+      margin-top: 20px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1em;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Trivia Quiz</h1>
+    
+    <div class="progress">
+      Question <%= questionNumber %> of <%= totalQuestions %> | Score: <%= score %>
+    </div>
+    
+    <% if (feedback) { %>
+      <div class="feedback <%= feedback.status %>">
+        <%= feedback.message %>
+      </div>
+    <% } %>
+    
+    <div class="question">
+      <%= question %>
+    </div>
+    
+    <form action="/quiz" method="POST">
+      <input type="text" name="answer" placeholder="Your answer" required autofocus>
+      <button type="submit">Submit Answer</button>
+    </form>
+  </div>
+</body>
+</html>
