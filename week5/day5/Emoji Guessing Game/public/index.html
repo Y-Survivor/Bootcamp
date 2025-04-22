@@ -1,0 +1,70 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Emoji Guessing Game</title>  
+    <link rel="stylesheet" href="style.css">  
+</head>  
+<body>  
+  <div class="container">  
+    <h1>Emoji Guessing Game</h1>  
+    
+    <div id="welcome-screen">  
+      <h2>Welcome to the Emoji Guessing Game!</h2>  
+      <p>Test your emoji knowledge by guessing the correct name for each emoji.</p>  
+      <button id="start-game">Start Game</button>  
+    </div>  
+    
+    <div id="game-screen" class="hidden">  
+      <div class="score-container">  
+        <span>Score: <span id="score">0</span></span>  
+        <span>Round: <span id="round">1</span></span>  
+      </div>  
+      
+      <div class="emoji-container">  
+        <span id="current-emoji" class="emoji"></span>  
+        <p>What is this emoji called?</p>  
+      </div>  
+      
+      <div class="options-container" id="options">  
+        <!-- Options will be dynamically added here -->  
+      </div>  
+      
+      <div id="feedback" class="feedback hidden"></div>  
+    </div>  
+    
+    <div id="end-game-screen" class="hidden">  
+      <h2>Game Over!</h2>  
+      <p>Your final score: <span id="final-score">0</span></p>  
+      <p>You played <span id="total-rounds">0</span> rounds</p>  
+      
+      <div class="name-form">  
+        <label for="player-name">Enter your name for the leaderboard:</label>  
+        <input type="text" id="player-name" maxlength="20" placeholder="Your Name">  
+        <button id="submit-score">Submit Score</button>  
+      </div>  
+      
+      <button id="play-again">Play Again</button>  
+    </div>  
+    
+    <div id="leaderboard-container">  
+      <h2>Leaderboard</h2>  
+      <table id="leaderboard">  
+        <thead>  
+          <tr>  
+            <th>Rank</th>  
+            <th>Name</th>  
+            <th>Score</th>  
+          </tr>  
+        </thead>  
+        <tbody>  
+          <!-- Leaderboard entries will be dynamically added here -->  
+        </tbody>  
+      </table>  
+    </div>  
+  </div>  
+  
+  <script src="/script.js"></script>  
+</body>  
+</html>  
