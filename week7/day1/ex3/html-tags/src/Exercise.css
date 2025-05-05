@@ -1,0 +1,12 @@
+/* 
+This is how you would typically apply these styles in a CSS file.
+In our component, we've used inline styles to avoid import issues.
+*/
+
+.para {
+    background-color: #282c34;
+    color: white;
+    padding: 40px;
+    font-family: Arial;
+    text-align: center;
+  }
