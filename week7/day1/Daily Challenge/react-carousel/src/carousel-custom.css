@@ -1,0 +1,23 @@
+/* Custom styling to match the screenshot */
+.carousel .thumb {
+    border: 3px solid #f8f9fa;
+    box-sizing: border-box;
+  }
+  
+  .carousel .thumb.selected,
+  .carousel .thumb:hover {
+    border: 3px solid #007bff;
+  }
+  
+  .carousel .slide .legend {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    bottom: 0;
+    width: 100%;
+    border-radius: 0;
+    left: 0;
+    margin-left: 0;
+    padding: 15px;
+    opacity: 1;
+    text-align: center;
+  }
